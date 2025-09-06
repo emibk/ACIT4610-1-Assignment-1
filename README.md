@@ -156,7 +156,7 @@ This notebook has two parts:
 
 
 
-\### Repository Structure
+### Repository Structure
 
 Assignment1.ipynb     # notebook version (all code in cells)
 
