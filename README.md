@@ -64,7 +64,7 @@ We test three groups of scenarios, each with two instances:
 
 
 
-\- Representation:
+- Representation:
 
 &nbsp; Each individual is represented as a list with two parts: [route, vehicles]
 
@@ -74,7 +74,7 @@ We test three groups of scenarios, each with two instances:
 
 
 
-\- Operators:
+- Operators:
 
 &nbsp; - Selection: Rank-based selection
 
@@ -110,9 +110,9 @@ Each individual, for each scenario, is tested with the parameters:
 
 - Set A: Population 60, Generations 70, Crossover 0.90, Mutation 0.10
 
-\- Set B: Population 75, Generations 85, Crossover 0.80, Mutation 0.30
+- Set B: Population 75, Generations 85, Crossover 0.80, Mutation 0.30
 
-\- Set C: Population 90, Generations 100, Crossover 0.70, Mutation 0.50
+- Set C: Population 90, Generations 100, Crossover 0.70, Mutation 0.50
 
 
 
@@ -125,9 +125,9 @@ Each individual, for each scenario, is tested with the parameters:
 
 ### Performance Metrics
 
-\- Runtime (seconds),
+- Runtime (seconds),
 
-\- Plot best fitness for each generations 
+- Plot best fitness for each generations 
 
 
 ---
