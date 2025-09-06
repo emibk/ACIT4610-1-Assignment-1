@@ -63,8 +63,7 @@ We test three groups of scenarios, each with two instances:
 ### GA Design
 
 
-
-- Representation:
+Representation:
 
 &nbsp; Each individual is represented as a list with two parts: [route, vehicles]
 
@@ -74,7 +73,7 @@ We test three groups of scenarios, each with two instances:
 
 
 
-- Operators:
+Operators:
 
 &nbsp; - Selection: Rank-based selection
 
@@ -94,7 +93,7 @@ We test three groups of scenarios, each with two instances:
 
 
 
-- Termination: Fixed number of generations.
+Termination: Fixed number of generations.
 
 
 
