@@ -1,14 +1,14 @@
 # ACIT4610-1-Assignment-1
 
-\# README
+# README
 
 
 
-\## Vehicle Routing Problem with Genetic Algorithm (GA)
+## Vehicle Routing Problem with Genetic Algorithm (GA)
 
 
 
-\### Project Description
+### Project Description
 
 This project implements a Genetic Algorithm (GA) to solve the Vehicle Routing Problem (VRP).
 
@@ -18,15 +18,12 @@ The VRP involves finding efficient routes for a fleet of vehicles to serve a set
 
 Our GA-based solver:
 
-\- Minimizes the total Euclidean travel distance across all routes,
-
-\- Ensures that each customer is visited exactly once,
-
-\- Splits customer permutations into routes using dynamic programming (DP) to optimally assign vehicles.
+- Minimizes the total Euclidean travel distance across all routes,
 
 
 
-The implementation is written in Python as a single Jupyter-compatible script (spaghetti style).
+
+The implementation is written in Python as a single Jupyter Notebook.
 
 
 
@@ -34,37 +31,20 @@ The implementation is written in Python as a single Jupyter-compatible script (s
 
 
 
-\### Problem Scenarios
+### Problem Scenarios
 
 We test three groups of scenarios, each with two instances:
 
 
 
-\- Small: 2–10 vehicles, 10–20 customers
+- Small: 2–10 vehicles, 10–20 customers
 
-\- Medium: 11–25 vehicles, 15–30 customers
+- Medium: 11–25 vehicles, 15–30 customers
 
-\- Large: 26–50 vehicles, 20–50 customers
-
-
-
-For the large group, we use 35 vehicles and 40 customers (per assignment requirements).
+- Large: 26–50 vehicles, 20–50 customers
 
 
 
----
-
-
-
-\### Objective
-
-\- Minimize total travel distance across all vehicles.
-
-\- Every vehicle route starts and ends at the depot.
-
-\- Every customer must be visited exactly once.
-
-\- No time-window or vehicle-capacity constraints (simplified VRP).
 
 
 
@@ -72,31 +52,15 @@ For the large group, we use 35 vehicles and 40 customers (per assignment require
 
 
 
-\### GA Design
+### Objective
 
+- Minimize total travel distance across all vehicles.
 
+- Every vehicle route starts and ends at the depot.
 
-\- Representation:
+- Every customer must be visited exactly once.
 
-&nbsp; Customers are represented as a permutation (list of indices).
-
-&nbsp; Routes are split using a DP-based segmentation algorithm that assigns customers optimally across the available vehicles.
-
-
-
-\- Operators:
-
-&nbsp; - Selection: Tournament selection
-
-&nbsp; - Crossover: Order Crossover (OX)
-
-&nbsp; - Mutation: Swap mutation
-
-&nbsp; - Elitism: Best individuals carried over each generation
-
-
-
-\- Termination: Fixed number of generations.
+- No time-window or vehicle-capacity constraints.
 
 
 
@@ -104,21 +68,38 @@ For the large group, we use 35 vehicles and 40 customers (per assignment require
 
 
 
-\### GA Parameter Sets
-
-We test three parameter sets as required:
+### GA Design
 
 
 
-\- Set A: Population 60, Generations 150, Crossover 0.90, Mutation 0.20
+- Representation:
+&nbsp; Each individual is represented by route and vehicles, through a list [route, vehicles]
 
-\- Set B: Population 100, Generations 120, Crossover 0.85, Mutation 0.10
+&nbsp; Route is a permutation of customer locations (indices)
 
-\- Set C: Population 60, Generations 220, Crossover 0.90, Mutation 0.30
+&nbsp; Vehicles represent which vehicle goes to a specific customer location.
 
 
 
-Each scenario is tested with all three parameter sets, repeated three trials each.
+- Operators:
+
+&nbsp; Selection: Rank-based selection
+
+&nbsp; Crossover: Route crossover + vehicles crossover.
+
+&nbsp; Route crossover: swapping two customer locations at random. 
+
+&nbsp; Vehicles crossover: uniform crossover.
+
+&nbsp; Mutation: Route mutation or vehicles mutation.
+
+&nbsp; Vehicles mutation: random resetting - In each position, with a probability, replace with a new vehicle value, from the list of admissible values
+
+&nbsp; Elitism: Best individuals(top 2 parents) carried over each generation
+
+
+
+- Termination: Fixed number of generations.
 
 
 
@@ -126,29 +107,37 @@ Each scenario is tested with all three parameter sets, repeated three trials eac
 
 
 
-\### Performance Metrics
+### GA Parameter Sets
+
+We test parameters, for two instances, of each scenario:
+
+
+
+\- Set A: Population 15, Generations 70, Crossover 0.90, Mutation 0.10
+
+\- Set B: Population 25, Generations 85, Crossover 0.80, Mutation 0.30
+
+\- Set C: Population 40, Generations 100, Crossover 0.70, Mutation 0.05
+
+
+
+Each test is over 20 runs of the algorithm.
+
+
+---
+
+
+
+### Performance Metrics
 
 We measure:
 
-\- Solution quality (best, average, worst distance per setting),
+- Solution quality (best, average, worst fitness per test) over 20 runs
 
-\- Runtime (seconds),
+- Runtime (seconds) - worst, average, worst over 20 runs
 
-\- Convergence (best distance per generation),
+\- Plot convergence (fitnesses per generation)
 
-\- Best generation where the optimum was found.
-
-
-
-Outputs:
-
-\- outputs/results\_raw.csv -> all trial data
-
-\- outputs/results\_summary.csv -> aggregated best/avg/worst results
-
-\- outputs/convergence\_\[scenario]\_\[param].png -> convergence plots
-
-\- outputs/routes\_\[scenario].png -> best route visualization
 
 
 
@@ -156,23 +145,24 @@ Outputs:
 
 
 
-\### How to Run
+### How to Run
 
 
 
-1\. Install Python (>=3.9 recommended).
+1. Install Python (>=3.9 recommended).
 
-2\. Install dependencies:
+2. Install dependencies:
 
 &nbsp;  pip install numpy matplotlib
+&nbsp; pip install numpy
 
-3\. Open the Jupyter notebook or run the spaghetti .py file.
-
-&nbsp;  In Jupyter/VS Code:
-
-&nbsp;  - Use Run All Cells.
-
-&nbsp;  - Results will be written to the outputs/ folder.
+3. The notebook is split into two main parts:
+   1. Step-by-step walkthrough:
+   - This section demonstrates how the solution was developed.
+   - Not required to be run to produce final results.
+   2. Final algorithm
+   - Contains the final GA implementation.
+   - You can run only this part to generate the results.
 
 
 
@@ -180,29 +170,14 @@ Outputs:
 
 
 
-\### Repository Structure
+### Repository Structure
 
-assignment1 final.ipynb     # notebook version (all code in cells)
+Assignment1.ipynb     # notebook version (all code in cells)
 
-assignment1 final.py        # optional script version
 
 README.md               # this file
 
-outputs/
 
-&nbsp;   results\_raw.csv
-
-&nbsp;   results\_summary.csv
-
-&nbsp;   convergence\_small\_1\_A.png
-
-&nbsp;   convergence\_small\_1\_B.png
-
-&nbsp;   ...
-
-&nbsp;   routes\_small\_1.png
-
-&nbsp;   ...
 
 
 
@@ -210,13 +185,12 @@ outputs/
 
 
 
-\### Notes
+### Notes
 
-\- Results may differ slightly on each run due to GA randomness.
+- Results may differ slightly on each run due to GA randomness.
 
-\- For reporting, we include best, average, and worst results from several runs (not just a single run).
+- For reporting, we include best, average, and worst results from several runs (not just a single run).
 
-\- Large scenarios (35 vehicles × 40 customers) may take longer — adjust population size and generations if needed on slower machines.
 
 
 
@@ -224,11 +198,11 @@ outputs/
 
 
 
-\### Authors
+### Authors
 
-\- Group 4 Lara Hassanieh, Nicoleta Emilia Chisim and Hemen Waisi
+- Group 4 Lara Hassanieh, Nicoleta Emilia Chisim and Hemen Waisi
 
-\- OsloMet – ACIT 4610, Fall 2025
+- OsloMet – ACIT 4610, Fall 2025
 
 
 
