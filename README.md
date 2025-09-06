@@ -1,10 +1,8 @@
 # ACIT4610-1-Assignment-1
 
-\# README
 
 
-
-\## Vehicle Routing Problem with Genetic Algorithm (GA)
+## Vehicle Routing Problem with Genetic Algorithm (GA)
 
 
 
