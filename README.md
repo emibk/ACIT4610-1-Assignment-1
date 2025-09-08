@@ -93,7 +93,9 @@ We test three groups of scenarios, each with two instances:
 
 &nbsp; Mutation: Route mutation or vehicles mutation.
 
-&nbsp; Vehicles mutation: random resetting - In each position, with a probability, replace with a new vehicle value, from the list of admissible values
+&nbsp; Vehicles mutation: random resetting - In each position, with a probability, replace with a new vehicle value, from the list of admissible values.
+
+&nbsp; Route mutation: swap two random locations.
 
 &nbsp; Elitism: Best individuals(top 2 parents) carried over each generation
 
@@ -136,7 +138,7 @@ We measure:
 
 - Runtime (seconds) - worst, average, worst over 20 runs
 
-\- Plot convergence (fitnesses per generation)
+- Plot convergence (fitnesses per generation)
 
 
 
